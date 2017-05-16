@@ -1,0 +1,98 @@
+body {
+    background:none repeat scroll 0 0 #807f84;
+    border:0 none;
+}
+form{
+	display: inline-block;
+	background-color: #999999;
+	padding-left: 0px;
+	font-family: Frutiger, monospace;
+}
+header
+{
+	text-decoration-color: white;
+	font-family: Frutiger;
+	font-size: 25pt;
+		color: white;
+	background-color: #003366;
+	width: 100%;
+	margin:0px 0px 20px 0px;
+	text-align: center;
+}
+#instructions
+{
+	margin-left: auto;
+	margin-right: auto;
+    width: 800px;
+    background-color:#999999; 
+}
+
+#experiment_frame
+{
+    margin-left: auto;
+    margin-right: auto;
+    width:500px;
+    height: 500px;
+    border: solid black 1px;
+}
+
+#header
+{
+		/*height: 120px; */
+}
+
+#left_cat
+{
+	font-size: 1.5em;
+	margin: 15px;
+	float: left;
+}
+
+#right_cat
+{
+	font-size: 1.5em;
+	margin: 15px;
+	float: right;
+}
+
+#exp_instruct
+{
+    margin: 15px;
+}
+
+#under_instruct
+{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    width: 600px;
+}
+
+.itemdiv
+{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.IATitem
+{
+	font-size: 1.5em;
+	margin-left: auto;
+	margin-right: auto;
+	height: 200px;
+	display: none;
+}
+
+#word {
+	width: 100px;
+	max-height: 115px;
+	text-align: center;
+	padding-top: 85px;
+}
+#wrong
+{
+	margin-left: auto;
+	margin-right: auto;
+	height: 80px;
+	display: none;
+}
