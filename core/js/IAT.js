@@ -12,6 +12,7 @@ function randomString(length) {
 var demo = true;
 function initialize()
 {	
+	demo = false; //debugging
 	if(demo)
 	{
 		demo = false;
@@ -118,6 +119,7 @@ function loadInstructions(stage)
 			$.get("core/IAT.html", function(data) {
 				$('body').html(data);
 				document.onkeypress = keyHandler; 
+				document.getElementById("experiment_frame").onmousedown = handleClick;
 				startIAT();
 			});
 			break;
@@ -712,13 +714,135 @@ function checkDemographics()
 }
 function checkQuestionairre()
 {
+	qError = false;
 	questionArray = [];
-	questionArray.push("," +$("input[name=NARS-Q01]:checked").val());
-	questionArray.push("," +$("input[name=NARS-Q02]:checked").val());
-	questionArray.push("," +$("input[name=NARS-Q03]:checked").val());
-	questionArray.push("," +$("input[name=NARS-Q04]:checked").val());
-	questionArray.push("," +$("input[name=NARS-Q05]:checked").val());
+	qerrormsg = "";
+	if($("input[name=NARS-Q01]:checked").val() ==null )
+	{
+		document.getElementById('NARSQ01').style.backgroundColor = "white";
+  		document.getElementById('NARSQ01').style.borderColor = "red";
+  		document.getElementById('NARSQ01').style.borderStyle = "double";
+		qError = true;
+	}
+	if($("input[name=NARS-Q02]:checked").val() ==null )
+	{
+		document.getElementById('NARSQ02').style.backgroundColor = "white";
+  		document.getElementById('NARSQ02').style.borderColor = "red";
+  		document.getElementById('NARSQ02').style.borderStyle = "double";
+		qError = true;
+	}
+	if($("input[name=NARS-Q03]:checked").val() ==null )
+	{
+		document.getElementById('NARSQ03').style.backgroundColor = "white";
+  		document.getElementById('NARSQ03').style.borderColor = "red";
+  		document.getElementById('NARSQ03').style.borderStyle = "double";
+		qError = true;
+	}
+	if($("input[name=NARS-Q04]:checked").val() ==null )
+	{
+		document.getElementById('NARSQ04').style.backgroundColor = "white";
+  		document.getElementById('NARSQ04').style.borderColor = "red";
+  		document.getElementById('NARSQ04').style.borderStyle = "double";
+		qError = true;
+	}
+	if($("input[name=NARS-Q05]:checked").val() ==null )
+	{
+		document.getElementById('NARSQ05').style.backgroundColor = "white";
+  		document.getElementById('NARSQ05').style.borderColor = "red";
+  		document.getElementById('NARSQ05').style.borderStyle = "double";
+		qError = true;
+	}
+	if($("input[name=NARS-Q06]:checked").val() ==null )
+	{
+		document.getElementById('NARSQ06').style.backgroundColor = "white";
+  		document.getElementById('NARSQ06').style.borderColor = "red";
+  		document.getElementById('NARSQ06').style.borderStyle = "double";
+		qError = true;
+	}
+	if($("input[name=NARS-Q07]:checked").val() ==null )
+	{
+		document.getElementById('NARSQ07').style.backgroundColor = "white";
+  		document.getElementById('NARSQ07').style.borderColor = "red";
+  		document.getElementById('NARSQ07').style.borderStyle = "double";
+		qError = true;
+	}
+	if($("input[name=NARS-Q08]:checked").val() ==null )
+	{
+		document.getElementById('NARSQ08').style.backgroundColor = "white";
+  		document.getElementById('NARSQ08').style.borderColor = "red";
+  		document.getElementById('NARSQ08').style.borderStyle = "double";
+		qError = true;
+	}
+	if($("input[name=NARS-Q09]:checked").val() ==null )
+	{
+		document.getElementById('NARSQ09').style.backgroundColor = "white";
+  		document.getElementById('NARSQ09').style.borderColor = "red";
+  		document.getElementById('NARSQ09').style.borderStyle = "double";
+		qError = true;
+	}
+	if($("input[name=NARS-Q10]:checked").val() ==null )
+	{
+		document.getElementById('NARSQ10').style.backgroundColor = "white";
+  		document.getElementById('NARSQ10').style.borderColor = "red";
+  		document.getElementById('NARSQ10').style.borderStyle = "double";
+		qError = true;
+	}
+	if($("input[name=NARS-Q11]:checked").val() ==null )
+	{
+		document.getElementById('NARSQ11').style.backgroundColor = "white";
+  		document.getElementById('NARSQ11').style.borderColor = "red";
+  		document.getElementById('NARSQ11').style.borderStyle = "double";
+		qError = true;
+	}
+	if($("input[name=NARS-Q12]:checked").val() ==null )
+	{
+		document.getElementById('NARSQ12').style.backgroundColor = "white";
+  		document.getElementById('NARSQ12').style.borderColor = "red";
+  		document.getElementById('NARSQ12').style.borderStyle = "double";
+		qError = true;
+	}
+	if($("input[name=NARS-Q13]:checked").val() ==null )
+	{
+		document.getElementById('NARSQ13').style.backgroundColor = "white";
+  		document.getElementById('NARSQ13').style.borderColor = "red";
+  		document.getElementById('NARSQ13').style.borderStyle = "double";
+		qError = true;
+	}
+	if($("input[name=NARS-Q14]:checked").val() ==null )
+	{
+		document.getElementById('NARSQ14').style.backgroundColor = "white";
+  		document.getElementById('NARSQ14').style.borderColor = "red";
+  		document.getElementById('NARSQ14').style.borderStyle = "double";
+		qError = true;
+	}
+
+
+	if(qError)
+	{
+		qerrormsg += "<div class='error'>Please answer all of the highlighted survey questions.</div>";
+		$('#error-1').html(qerrormsg);
+		//loadInstructions("two");
+	}
+	else
+	{
+		questionArray.push("NARS:");
+		questionArray.push("," +$("input[name=NARS-Q01]:checked").val());
+		questionArray.push("," +$("input[name=NARS-Q02]:checked").val());
+		questionArray.push("," +$("input[name=NARS-Q03]:checked").val());
+		questionArray.push("," +$("input[name=NARS-Q04]:checked").val());
+		questionArray.push("," +$("input[name=NARS-Q05]:checked").val());
+		questionArray.push("," +$("input[name=NARS-Q06]:checked").val());
+		questionArray.push("," +$("input[name=NARS-Q07]:checked").val());
+		questionArray.push("," +$("input[name=NARS-Q08]:checked").val());
+		questionArray.push("," +$("input[name=NARS-Q09]:checked").val());
+		questionArray.push("," +$("input[name=NARS-Q10]:checked").val());
+		questionArray.push("," +$("input[name=NARS-Q11]:checked").val());
+		questionArray.push("," +$("input[name=NARS-Q12]:checked").val());
+		questionArray.push("," +$("input[name=NARS-Q13]:checked").val());
+		questionArray.push("," +$("input[name=NARS-Q14]:checked").val());
+
 	console.log(questionArray);
+	}
 }
 
 
@@ -873,7 +997,38 @@ function displayItem()
 		}
 	}
 }
+function handleClick(event)
+{
+	console.log("click");
+	if (currentState == "instruction"  && session != 7)
+    {
+		currentState = "play";
+		$('#exp_instruct').html('');
+		displayItem();
+    }
+    else if(  session == 7)
+    {
+    	writeFile();
+    	loadInstructions('Three');
+    }
 
+	// in session
+	if (currentState == "play")
+	{
+		var x = event.pageX - $('#experiment_frame').offset().left;
+		console.log(x);
+		if(x > 0 && x < 200)
+		{
+			event.keyCode = 69;
+		}
+		else if(x > 300 && x < 500 )
+		{
+			event.keyCode = 73;
+		}
+
+		runSession(event);
+	}
+}
 function runSession(kEvent)
 {
 	var rCorrect = roundArray[session][roundnum].correct;
