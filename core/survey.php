@@ -17,8 +17,8 @@ require_once('locations.php');
 <div id="surveylist">
 	<form id="demographics">
 		Before completing the survey please answer the following questions about yourself.
-        <ol id="demoglist">
-            <li><p>How do you describe your gender identity(Mark all that apply)</p>
+        <ul id="demoglist">
+            <li><p>How do you describe your gender identity?(Mark all that apply)</p>
                 <p> 
                     <input id="gender_male" name="gender" type="checkbox" value="Male"/>
                     <label for="gender_male">Male</label>
@@ -40,7 +40,7 @@ require_once('locations.php');
                 <br> 
                     <input id="race_other" name="race" type="checkbox" value="Other"/> 
                     <label for="race_other">I prefer to specify: </label>
-                    <input type="text" id="yourText"  
+                    <input type="text" id="yourText" >  
                 <br>   
                     <input id="gender_none" name="gender" type="checkbox" value="none"/>
                     <label for="gender_none">I prefer not to answer</label>
@@ -50,7 +50,7 @@ require_once('locations.php');
                 <span> 
                     <select id="age" name="age">
                         <option value="unselected" selected="selected"></option>
-						<?php for ($i=110;$i>0;$i--) echo "<option value=".(112-$i).">" . (1900 + $i) . "</option>"; ?>
+						<?php for ($i=110;$i>0;$i--) echo "<option value=".(117-$i).">" . (1900 + $i) . "</option>"; ?>
 	 				</select>
                 </span> 
             </li>        
@@ -79,20 +79,19 @@ require_once('locations.php');
                     <label for="race_amind">Native American or Alaskan Native</label>
                 <br> 
                     <input id="race_other" name="race" type="checkbox" value="Other"/> 
-                    <label for="race_other">Other/ Describe   </label>
+                    <label for="race_other">Other   </label>
                     <input type="text" id="yourText"  >
 
                 </p>
             </li>    
             <li>
-                <label for="loc">What is your nationality:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <label for="loc"><p>What is your nationality?<p></label>
                 <select id="loc" name="loc">';
                     <?php foreach($Countries as $abbr => $country) echo "<option value='" . $abbr . "'>" . $country . "</option>"; ?>       
                 </select>
             </li>
-            <br>
             <li>
-                <label for="coun">What is your country of residence:&nbsp;</label>
+                <label for="coun"><p>What is your country of residence?<p></label>
                 <select id="coun" name="coun">';
                     <?php foreach($Countries as $abbr => $country) echo "<option value='" . $abbr . "'>" . $country . "</option>"; ?>       
                 </select>
@@ -102,12 +101,13 @@ require_once('locations.php');
                     <label for="income">Please select annual household income (in US dollars; click <a href="http://finance.yahoo.com/currency-converter/?u#from=INR;to=USD;amt=1" target="_blank">here</a> for currency conversion).</label>        
                 </p> 
                 <p>
-                    <select id="income" name="income"> 
-                         <option value="one">Less than $25,000</option>
-                        <option value="two">$25,000 - $50,000</option>
-                        <option value="three">$50,000 - $75,000</option>
-                        <option value="four">$75,000 - $100,000</option>
-                        <option value="five">More than $100,000</option>
+                    <select id="income" name="income">
+                     <option disabled selected value="unselected"> -- select an option -- </option> 
+                         <option value="25">Less than $25,000</option>
+                        <option value="50">$25,000 - $50,000</option>
+                        <option value="75">$50,000 - $75,000</option>
+                        <option value="100">$75,000 - $100,000</option>
+                        <option value="100+">More than $100,000</option>
                         </select>
                 </p> 
             </li>         
@@ -117,7 +117,7 @@ require_once('locations.php');
                 </p> 
                 <p>
                     <select id="edu" name="edu"> 
-                        <option value="unselected" selected="selected"></option>
+                       <option disabled selected value="unselected"> -- select an option -- </option>
                         <option value="none">No schooling completed, or less than 1 year</option>
                         <option value="elem">Nursery, kindergarten, and elementary (grades 1-8)</option>
                         <option value="high">High school (grades 9-12, no degree)</option>
@@ -130,6 +130,20 @@ require_once('locations.php');
                         <option value="phd">Doctorate degree (PhD, EdD, etc)</option>
                     </select>
                 </p> 
+            </li>
+             <li>
+                <p> Please indicate your marital status. <p>
+                <input id="married" name="marital" type="radio" value="Married">
+                    <label for="marital">Married</label>
+                <br>     
+                    <input id="single" name="marital" type="radio" value="Single">
+                    <label for="Single">Single</label>
+                    <br>
+                    <input id="divorced" name="marital" type="radio" value="divorced" >
+                    <label for="married">Divorced</label>
+                    <br>
+                    <input id="widowed" name="marital" type="radio" value="Widowed" >
+                    <label for="married">Widowed</label>
             </li>
             <li><p>Do you identify as an English learner?</p>
                 <p> 
@@ -149,13 +163,20 @@ require_once('locations.php');
                 </p>
             </li> 
             <li>
-            <p>Please identify your religion.(leave blank if you do not identify with any particular religion)<p>
-            <input id="religion" name="religion" type="Text" style="min-width: 250px" >
-                    <label for="gender_male"></label>
+            <p>Please identify your religion.<p>
+                  <select id ="religion" name = "religion" >
+                  <option disabled selected value="unselected"> -- select an option -- </option>
+                    <option value = "bu">Buddhism </option>
+                    <option value = "ch">Christianity </option>
+                    <option value = "Hi">Hinduism </option>                    
+                    <option value = "IS">Islam </option>
+                    <option value = "ot">other </option>
+                    <option value = "none">none </option>
+                  </select>
             </li>
             <li>
                 <p>Definition: A robot is a machine designed to execute one or more tasks automatically with speed and precision. <br>
-                Does your occupation currently involve working with a robot.</p>
+                Does your occupation currently involve working with a robot?</p>
                 <p> 
                     <input id="robot:no" name="robot" type="radio" value="No" checked>
                     <label for="robot:no">No</label>
@@ -164,19 +185,9 @@ require_once('locations.php');
                     <label for="robot:yes">Yes</label>
                 </p>
             </li>
-            <li>
-                <p> Please indicate your marital status. <p>
-                <input id="married" name="marital" type="radio" value="Married" checked>
-                    <label for="married">Married</label>
-                <br>     
-                    <input id="single" name="single" type="radio" value="Single">
-                    <label for="Single">Single</label>
-                    <br>
-                    <input id="divorced" name="divorced" type="radio" value="divorced" >
-                    <label for="married">Divorced</label>
-            </li>
-        </ol>
-		<div id="error-1"></div>
+           
+        </ul>
+		<div id="error-1" class="error"></div>
 		
         <input type="button" value="Submit Demographics" style="margin-left: 40%; margin-right: 40%;" onclick='checkDemographics()'/>
         <div id="participant">

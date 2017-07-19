@@ -606,15 +606,20 @@ function IsNumeric(input)
 var demos = "";
 function checkDemographics()
 {
-    gender = $("input[name=gender]:checked").val();
+    //gender = $("input[name=gender]:checked").val();
+    gender = [];
+    $("input[name=gender]:checked").each(function() { gender.push($(this).val()); });
     age = $("#age option:selected").val();
-    console.log(age);
+   // console.log(age);
     loc = $("#loc option:selected").val().replace(/[^A-Za-z0-9,]/g,' ');
+    //races = $("input[name=race]:checked").val();
     races = [];
 	$("input[name=race]:checked").each(function() { races.push($(this).val()); });
     income = $("#income").val();
     education = $("#edu option:selected").val();
-    
+    marital = $("input[name = marital]:checked").val();
+    religion = $("#religion option:selected").val();
+    //console.log(marital);
     // alert(income+"\n"+parseFloat(income)+"\n");
     // $.get('getLocation.php', 
     //         { 'q': loc},
@@ -636,6 +641,11 @@ function checkDemographics()
         error=true;
         errmsg += "<div class='error'>Please state the year you were born</div>";
     }
+    else if(age < 18 )
+    {
+    	error = true;
+    	errmsg += "<div class='error'>You must be 18 years or older to take this survey</div>";
+    }
 	if(loc.length == 0)
     {
         error=true;
@@ -644,12 +654,12 @@ function checkDemographics()
     if(races==null)
     {
         error=true;
-        errmsg += "<div class='error'>Please indicate your ethnicity</div>";
+        errmsg += "<div class='error'>Please indicate your race and ethnicity</div>";
     }
-    if(income==null || $.trim(income) != income.replace(/[^0-9$.,]/g,'') || !IsNumeric(income.replace(/[^0-9.]/g,'')))
+    if(income==null ||income == "unselected" )
     {
         error=true;
-        errmsg += "<div class='error'>Please enter a valid number for income</div>";
+        errmsg += "<div class='error'>Please select a valid option for household income</div>";
     }
     if(education=="unselected")
     {
@@ -661,6 +671,16 @@ function checkDemographics()
         error=true;
         errmsg += "<div class='error'>Please enter a valid identifier</div>";
     }
+    if(!marital )
+    {
+    	error = true;
+    	errmsg += "<div class='error'>Please select a valid marital status</div>";
+    }
+    if(religion == null || religion == "unselected")
+    {
+    	error = true;
+    	errmsg += "<div class = 'error'>Please select a valid option for religion.</div>";
+    }
 	// Output error message if input not valid
     if(error==false)
     {
@@ -671,10 +691,15 @@ function checkDemographics()
        demos += gender+'\t';
         demos += age+'\t';
        demos += loc+'\t';
-       demos += races.join(',')+'\t';
+      // demos += races.join(',')+'\t';
+        demos += races+'\t';
+       
        demos += income.replace(/[^0-9.]/g,'')+'\t';
+       demos += marital+'\t';
+       demos += religion +'\t';
        demos += education+'\n';
         demo = false;
+        console.log(demos);
          $.post("core/fileManager.php", { 'op':'writedemographics',   'data': demos });	
 	   // $.post("core/writeFile.php", { 'subject': subject, 'src': "survey", 'data': demos }, function() {location.href = 'instruct2.php?sub='+sub;});
     	//loadInstructions("one");
@@ -687,7 +712,13 @@ function checkDemographics()
 }
 function checkQuestionairre()
 {
-	
+	questionArray = [];
+	questionArray.push("," +$("input[name=NARS-Q01]:checked").val());
+	questionArray.push("," +$("input[name=NARS-Q02]:checked").val());
+	questionArray.push("," +$("input[name=NARS-Q03]:checked").val());
+	questionArray.push("," +$("input[name=NARS-Q04]:checked").val());
+	questionArray.push("," +$("input[name=NARS-Q05]:checked").val());
+	console.log(questionArray);
 }
 
 
@@ -699,6 +730,7 @@ function WriteFile()
 	var subject = sub;
 	subject = subject.length==0 ? "unknown" : subject;
 	var str = "";
+	str += demos;
 	for (i=0; i<roundArray.length; i++)
 	{
 		for (j=0;j<roundArray[i].length;j++)

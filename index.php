@@ -14,7 +14,8 @@
 </script>
 </head>
 <header>
-UNR robotics implicit association test
+<img src= "core/unr.png"> 
+<br>Robotics Implicit Association Test
 </header>
 <body>
     
@@ -24,3 +25,6 @@ UNR robotics implicit association test
 </div>
 
 </body>
+<footer>
+Please email David Feil-Seifer, Dave@cse.unr.edu, with any questions regarding the study and iatrobotsurvey@gmail.com for assistance with any technical issues.
+</footer>
