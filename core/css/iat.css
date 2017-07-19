@@ -65,6 +65,8 @@ input[type=checkbox]
     width:500px;
     height: 500px;
     border: solid black 1px;
+background-color: #BABABA;
+	
 }
 
 #header

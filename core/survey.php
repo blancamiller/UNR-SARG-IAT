@@ -138,8 +138,7 @@ require_once('locations.php');
             <li><p><strong>Do you identify as an English learner?</strong></p>
                 <p> 
                     <input id="EL:NO" name="EL" type="radio" value="No" >
-                    <label for="gender_male">No</label>
-                <br>     
+                    <label for="gender_male">No&nbsp;&nbsp;&nbsp;&nbsp;</label>    
                     <input id="EL:Yes" name="EL" type="radio" value="Yes"/>
                     <label for="gender_female">Yes</label>
              
@@ -165,12 +164,11 @@ require_once('locations.php');
                   </select>
             </li>
             <li>
-                <p><strong>Definition: A robot is a machine designed to execute one or more tasks automatically with speed and precision. <br>
-                Does your occupation currently involve working with a robot? </strong></p>
+                <p>Definition: A robot is a machine designed to execute one or more tasks automatically with speed and precision. <br>
+                <strong>Does your occupation currently involve working with a robot? </strong></p>
                 <p> 
                     <input id="robot:no" name="robot" type="radio" value="No" >
-                    <label for="robot:no">No</label>
-                <br>     
+                    <label for="robot:no">No&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     <input id="robot:yes" name="robot" type="radio" value="Yes"/>
                     <label for="robot:yes">Yes</label>
                 </p>

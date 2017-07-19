@@ -25,9 +25,9 @@ function initialize( val)
 			
 		}); 
 		});
-	console.log("FIRST");
+	//console.log("FIRST");
 		loadInstructions("one");
-		//loadInstructions("Three");
+	//loadInstructions("Three");
 			}
 	else if(val == 1)
 	{
@@ -141,6 +141,12 @@ function loadInstructions(stage)
 			break;
 		case 'Three':
 			$.get("core/NARS.php", function(data) {
+				$('body').html(data);
+				
+			});
+			break;
+			case 'Four': 
+			$.get("core/finish.html", function(data) {
 				$('body').html(data);
 				
 			});
@@ -530,7 +536,7 @@ function calculateIAT()
 
 	B6_B3_diff /= B6_B3_SD;
 	B7_B4_diff /= B7_B4_SD;
-	console.log(B6_B3_diff + " " + B6_B3_SD+ " " +	B7_B4_diff+ " " + B7_B4_SD);
+	//console.log(B6_B3_diff + " " + B6_B3_SD+ " " +	B7_B4_diff+ " " + B7_B4_SD);
 	var tvalue = (B6_B3_diff + B7_B4_diff ) / 2.0;
 
     if (Math.abs(tvalue) > 2.89) { severity = " <b>much more</b> than "; }
@@ -639,6 +645,7 @@ function checkDemographics()
     education = $("#edu option:selected").val();
     marital = $("input[name = marital]:checked").val();
     religion = $("#religion option:selected").val();
+    nationality = $("input[name=coun]:checked").val();
     //console.log(marital);
     // alert(income+"\n"+parseFloat(income)+"\n");
     // $.get('getLocation.php', 
@@ -718,8 +725,9 @@ function checkDemographics()
        demos += marital+'\t';
        demos += religion +'\t';
        demos += education+'\n';
+        demos += nationality +'\t';
         demo = false;
-        console.log(demos);
+      //  console.log(demos);
          $.post("core/fileManager.php", { 'op':'writedemographics',   'data': demos });	
 	   // $.post("core/writeFile.php", { 'subject': subject, 'src': "survey", 'data': demos }, function() {location.href = 'instruct2.php?sub='+sub;});
     	//loadInstructions("two");
@@ -833,9 +841,85 @@ function checkQuestionairre()
   		document.getElementById('NARSQ14').style.borderStyle = "double";
 		qError = true;
 	}
+	if($("input[name=NARS-Q15]:checked").val() ==null )
+	{
+		document.getElementById('NARSQ15').style.backgroundColor = "white";
+  		document.getElementById('NARSQ15').style.borderColor = "red";
+  		document.getElementById('NARSQ15').style.borderStyle = "double";
+		qError = true;
+	}
+	if($("input[name=NARS-Q16]:checked").val() ==null )
+	{
+		document.getElementById('NARSQ16').style.backgroundColor = "white";
+  		document.getElementById('NARSQ16').style.borderColor = "red";
+  		document.getElementById('NARSQ16').style.borderStyle = "double";
+		qError = true;
+	}
+	if($("input[name=NARS-Q17]:checked").val() ==null )
+	{
+		document.getElementById('NARSQ17').style.backgroundColor = "white";
+  		document.getElementById('NARSQ17').style.borderColor = "red";
+  		document.getElementById('NARSQ17').style.borderStyle = "double";
+		qError = true;
+	}
+	if($("input[name=NARS-Q18]:checked").val() ==null )
+	{
+		document.getElementById('NARSQ18').style.backgroundColor = "white";
+  		document.getElementById('NARSQ18').style.borderColor = "red";
+  		document.getElementById('NARSQ18').style.borderStyle = "double";
+		qError = true;
+	}
+	if($("input[name=NARS-Q19]:checked").val() ==null )
+	{
+		document.getElementById('NARSQ19').style.backgroundColor = "white";
+  		document.getElementById('NARSQ19').style.borderColor = "red";
+  		document.getElementById('NARSQ19').style.borderStyle = "double";
+		qError = true;
+	}
+	if($("input[name=NARS-Q20]:checked").val() ==null )
+	{
+		document.getElementById('NARSQ20').style.backgroundColor = "white";
+  		document.getElementById('NARSQ20').style.borderColor = "red";
+  		document.getElementById('NARSQ20').style.borderStyle = "double";
+		qError = true;
+	}
+	if($("input[name=NARS-Q21]:checked").val() ==null )
+	{
+		document.getElementById('NARSQ21').style.backgroundColor = "white";
+  		document.getElementById('NARSQ21').style.borderColor = "red";
+  		document.getElementById('NARSQ21').style.borderStyle = "double";
+		qError = true;
+	}
+	if($("input[name=NARS-Q22]:checked").val() ==null )
+	{
+		document.getElementById('NARSQ22').style.backgroundColor = "white";
+  		document.getElementById('NARSQ22').style.borderColor = "red";
+  		document.getElementById('NARSQ22').style.borderStyle = "double";
+		qError = true;
+	}
+	if($("input[name=NARS-Q23]:checked").val() ==null )
+	{
+		document.getElementById('NARSQ23').style.backgroundColor = "white";
+  		document.getElementById('NARSQ23').style.borderColor = "red";
+  		document.getElementById('NARSQ23').style.borderStyle = "double";
+		qError = true;
+	}
+	if($("input[name=NARS-Q24]:checked").val() ==null )
+	{
+		document.getElementById('NARSQ24').style.backgroundColor = "white";
+  		document.getElementById('NARSQ24').style.borderColor = "red";
+  		document.getElementById('NARSQ24').style.borderStyle = "double";
+		qError = true;
+	}
+	if($("input[name=NARS-Q25]:checked").val() ==null )
+	{
+		document.getElementById('NARSQ25').style.backgroundColor = "white";
+  		document.getElementById('NARSQ25').style.borderColor = "red";
+  		document.getElementById('NARSQ25').style.borderStyle = "double";
+		qError = true;
+	}
 
-
-	if(qError)
+	if(qError )
 	{
 		qerrormsg += "<div class='error'>Please answer all of the highlighted survey questions.</div>";
 		$('#error-1').html(qerrormsg);
@@ -858,9 +942,23 @@ function checkQuestionairre()
 		questionArray.push("," +$("input[name=NARS-Q12]:checked").val());
 		questionArray.push("," +$("input[name=NARS-Q13]:checked").val());
 		questionArray.push("," +$("input[name=NARS-Q14]:checked").val());
+
+		questionArray.push("," +$("input[name=NARS-Q15]:checked").val());
+		questionArray.push("," +$("input[name=NARS-Q16]:checked").val());
+		questionArray.push("," +$("input[name=NARS-Q17]:checked").val());
+		questionArray.push("," +$("input[name=NARS-Q18]:checked").val());
+		questionArray.push("," +$("input[name=NARS-Q19]:checked").val());
+		questionArray.push("," +$("input[name=NARS-Q20]:checked").val());
+		questionArray.push("," +$("input[name=NARS-Q21]:checked").val());
+		questionArray.push("," +$("input[name=NARS-Q22]:checked").val());
+		questionArray.push("," +$("input[name=NARS-Q23]:checked").val());
+
+		questionArray.push("," +$("input[name=NARS-Q24]:checked").val());
+		questionArray.push("," +$("input[name=NARS-Q25]:checked").val());
 		demos += questionArray;
 		WriteFile();
-		console.log(demos);
+		//console.log(demos);
+		loadInstructions("Four");
 	}
 }
 
@@ -910,6 +1008,7 @@ function saveTest()
 		}
 	}
 	demos += resulttext +="\r\n";
+	WriteFile();
 }
 function WriteFile()
 {
@@ -1025,7 +1124,7 @@ function displayItem()
 }
 function handleClick(event)
 {
-	console.log("click");
+	//console.log("click");
 	if (currentState == "instruction"  && session != 7)
     {
 		currentState = "play";
