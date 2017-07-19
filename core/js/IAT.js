@@ -1,6 +1,6 @@
 template = {};
 sub = '';
-
+resulttext = [];
 function randomString(length) {
 	var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     var result = '';
@@ -10,10 +10,25 @@ function randomString(length) {
 
 // Loads the input file and starts introduction
 var demo = true;
-function initialize()
+var first = true;
+function initialize( val)
 {	
-	demo = false; //debugging
-	if(demo)
+	if(val == 0)
+	{
+		first = false;
+		demo = true;
+
+	$.getJSON("templates/active.txt", function(input) {
+		document.title = input.active + " IAT";
+		$.getJSON("templates/"+input.active+"/input.txt", function(data) { 
+			template = data;
+			
+		}); 
+		});
+	console.log("FIRST");
+		loadInstructions("one");
+			}
+	else if(val == 1)
 	{
 		demo = false;
 		$.getJSON("templates/active.txt", function(input) {
@@ -35,7 +50,7 @@ function initialize()
 		document.title = input.active + " IAT";
 		$.getJSON("templates/"+input.active+"/input.txt", function(data) { 
 			template = data;
-			$.get("core/instruct1.html", function(data) {
+			$.get("core/instruct2.html", function(data) {
 				$(".IATname").html(template.name);
 				$("#instructions").html(data);
 				$("#subID").val(randomString(10));
@@ -70,7 +85,7 @@ function loadInstructions(stage)
 			break;
 		case 'one':
 			sub = $("#subID").val();
-			if(sub.search('/[^a-zA-Z0-9]/g')==-1)
+			if(/*sub.search('/[^a-zA-Z0-9]/g')==-1 */ true) // not working yet
 			{
 				$.get("core/instruct1.html", function(data) {
 					$("#instructions").html(data);
@@ -704,8 +719,8 @@ function checkDemographics()
         console.log(demos);
          $.post("core/fileManager.php", { 'op':'writedemographics',   'data': demos });	
 	   // $.post("core/writeFile.php", { 'subject': subject, 'src': "survey", 'data': demos }, function() {location.href = 'instruct2.php?sub='+sub;});
-    	//loadInstructions("one");
-    	initialize();
+    	//loadInstructions("two");
+    	initialize(3);
     }
     else
     {
@@ -840,7 +855,8 @@ function checkQuestionairre()
 		questionArray.push("," +$("input[name=NARS-Q12]:checked").val());
 		questionArray.push("," +$("input[name=NARS-Q13]:checked").val());
 		questionArray.push("," +$("input[name=NARS-Q14]:checked").val());
-
+		demos += questionArray;
+	WriteFile();
 	console.log(questionArray);
 	}
 }
@@ -891,6 +907,7 @@ function WriteFile()
 			
 		}
 	}
+	str += resulttext +="\r\n";
     $.post("core/fileManager.php", { 'op':'writeoutput', 'template':template.name, 
  			'subject': subject, 'data': str });	
  	
@@ -946,7 +963,7 @@ function keyHandler(kEvent)
     }
     else if( unicode == 32 && session == 7)
     {
-    	writeFile();
+    	//writeFile();
     	loadInstructions('Three');
     }
 
@@ -1008,7 +1025,7 @@ function handleClick(event)
     }
     else if(  session == 7)
     {
-    	writeFile();
+    	//writeFile();
     	loadInstructions('Three');
     }
 

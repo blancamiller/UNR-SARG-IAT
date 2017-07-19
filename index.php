@@ -10,7 +10,7 @@
 <script type="text/javascript" src="core/js/IAT.js"></script>
 <script type="text/javascript">
 
-	initialize();
+	initialize(0);
 </script>
 </head>
 <header>

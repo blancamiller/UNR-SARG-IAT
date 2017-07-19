@@ -39,8 +39,7 @@ require_once('locations.php');
                     <label for="gender_cisgende">Cisgender</label>
                 <br> 
                     <input id="race_other" name="race" type="checkbox" value="Other"/> 
-                    <label for="race_other">I prefer to specify: </label>
-                    <input type="text" id="yourText" >  
+                    <label for="race_other">Other</label> 
                 <br>   
                     <input id="gender_none" name="gender" type="checkbox" value="none"/>
                     <label for="gender_none">I prefer not to answer</label>
@@ -80,18 +79,17 @@ require_once('locations.php');
                 <br> 
                     <input id="race_other" name="race" type="checkbox" value="Other"/> 
                     <label for="race_other">Other   </label>
-                    <input type="text" id="yourText"  >
 
                 </p>
             </li>    
             <li>
-                <label for="loc"><p>What is your nationality?<p></label>
+                <p>What is your nationality?<p>
                 <select id="loc" name="loc">';
                     <?php foreach($Countries as $abbr => $country) echo "<option value='" . $abbr . "'>" . $country . "</option>"; ?>       
                 </select>
             </li>
             <li>
-                <label for="coun"><p>What is your country of residence?<p></label>
+                <p>What is your country of residence?<p>
                 <select id="coun" name="coun">';
                     <?php foreach($Countries as $abbr => $country) echo "<option value='" . $abbr . "'>" . $country . "</option>"; ?>       
                 </select>

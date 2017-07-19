@@ -1,7 +1,7 @@
 <?php
 
 // Change to name of IAT
-$IATname = "Women / Men";
+$IATname = "Robots / Humans";
 
 // Change if you are / are not using images
 $pictures = true;
