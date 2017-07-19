@@ -14,38 +14,33 @@ require_once('locations.php');
 
 <body>
    
-<div id="surveylist">
+<div id="surveylist" style="padding-right: 10px; padding-left: 20px; min-height: 80%; padding-bottom: 20px; border: double;border-width: 2px;background-color:#BABABA;">
 	<form id="demographics">
-		Before completing the survey please answer the following questions about yourself.
-        <ul id="demoglist">
-            <li><p>How do you describe your gender identity?(Mark all that apply)</p>
+		<div style="text-align: center;"> Before completing the survey please answer the following questions about yourself. </div>
+        <ul id="demoglist" style="list-style: none">
+            <li><p> <strong>How do you describe your gender identity?(Mark all that apply)</strong></p>
                 <p> 
                     <input id="gender_male" name="gender" type="checkbox" value="Male"/>
-                    <label for="gender_male">Male</label>
-                <br>     
+                    <label for="gender_male">Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>     
                     <input id="gender_female" name="gender" type="checkbox" value="Female"/>
-                    <label for="gender_female">Female</label>
-                <br>  
+                    <label for="gender_female">Female&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> 
                  <input id="gender_Nonbinary" name="gender" type="checkbox"" value="NonBinary"/>
-                    <label for="gender_female">Genderqueer</label>
-                <br>
+                    <label for="gender_female">Genderqueer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                  <input id="gender_transgender" name="gender" type="checkbox" value="Transgender"/>
-                    <label for="gender_transgendere">Transgender</label>
+                    <label for="gender_transgendere">Transgender&nbsp;</label>
                     <br>
                 <input id="gender_agender" name="gender" type="checkbox" value="Transgender"/>
-                    <label for="gender_agendee">Agender</label>
-                <br> 
+                    <label for="gender_agendee">Agender&nbsp;&nbsp;</label> 
                   <input id="gender_cisgender" name="gender" type="checkbox" value="Transgender"/>
-                    <label for="gender_cisgende">Cisgender</label>
-                <br> 
-                    <input id="race_other" name="race" type="checkbox" value="Other"/> 
-                    <label for="race_other">Other</label> 
-                <br>   
+                    <label for="gender_cisgende">Cisgender&nbsp;&nbsp;</label>
                     <input id="gender_none" name="gender" type="checkbox" value="none"/>
-                    <label for="gender_none">I prefer not to answer</label>
+                    <label for="gender_none">I prefer not to answer&nbsp;&nbsp;&nbsp;</label>
+                    <input id="race_other" name="race" type="checkbox" value="Other"/> 
+                    <label for="race_other">Other</label>   
+                    
                 </p>
             </li>            
-            <li><label for="age">In what year were you born?</label>
+            <li><label for="age"><strong>In what year were you born?</strong></label>
                 <span> 
                     <select id="age" name="age">
                         <option value="unselected" selected="selected"></option>
@@ -54,7 +49,7 @@ require_once('locations.php');
                 </span> 
             </li>        
             <li>
-                <p>How do you describe your race and ethnicity? (Mark all that apply)</p>
+                <p><strong>How do you describe your race and ethnicity? (Mark all that apply)</strong></p>
                 <p>      
                      <input id="race_white" name="race" type="checkbox" value="White"/> 
                     <label for="race_white">White</label>
@@ -72,10 +67,7 @@ require_once('locations.php');
                     <label for="race_asian">Asian</label>
                 <br>
                     <input id="race_hawaii" name="race" type="checkbox" value="Hawaiian"/> 
-                    <label for="race_hawaii">Hawaiian, Pacific Islander</label>
-                <br> 
-                    <input id="race_amind" name="race" type="checkbox" value="AmInd"/> 
-                    <label for="race_amind">Native American or Alaskan Native</label>
+                    <label for="race_hawaii">Hawaiian or Pacific Islander</label>
                 <br> 
                     <input id="race_other" name="race" type="checkbox" value="Other"/> 
                     <label for="race_other">Other   </label>
@@ -83,20 +75,20 @@ require_once('locations.php');
                 </p>
             </li>    
             <li>
-                <p>What is your nationality?<p>
+                <p><strong>What is your nationality?</strong><p>
                 <select id="loc" name="loc">';
                     <?php foreach($Countries as $abbr => $country) echo "<option value='" . $abbr . "'>" . $country . "</option>"; ?>       
                 </select>
             </li>
             <li>
-                <p>What is your country of residence?<p>
+                <p><strong>What is your country of residence?</strong><p>
                 <select id="coun" name="coun">';
                     <?php foreach($Countries as $abbr => $country) echo "<option value='" . $abbr . "'>" . $country . "</option>"; ?>       
                 </select>
             </li>        
             <li>
                 <p> 
-                    <label for="income">Please select annual household income (in US dollars; click <a href="http://finance.yahoo.com/currency-converter/?u#from=INR;to=USD;amt=1" target="_blank">here</a> for currency conversion).</label>        
+                    <label for="income"><strong>Please select annual household income (in US dollars; click <a href="http://finance.yahoo.com/currency-converter/?u#from=INR;to=USD;amt=1" target="_blank">here</a> for currency conversion)</strong>.</label>        
                 </p> 
                 <p>
                     <select id="income" name="income">
@@ -111,7 +103,7 @@ require_once('locations.php');
             </li>         
             <li>
                 <p> 
-                    <label for="edu">Highest Education Level Attained:</label>        
+                    <label for="edu"><strong>Highest Education Level Attained:</strong></label>        
                 </p> 
                 <p>
                     <select id="edu" name="edu"> 
@@ -130,22 +122,22 @@ require_once('locations.php');
                 </p> 
             </li>
              <li>
-                <p> Please indicate your marital status. <p>
+                <p><strong>Please indicate your marital status.</strong><p>
                 <input id="married" name="marital" type="radio" value="Married">
                     <label for="marital">Married</label>
-                <br>     
+                   
                     <input id="single" name="marital" type="radio" value="Single">
-                    <label for="Single">Single</label>
-                    <br>
+                    <label for="Single">     Single</label>
+                  
                     <input id="divorced" name="marital" type="radio" value="divorced" >
-                    <label for="married">Divorced</label>
-                    <br>
+                    <label for="married">     Divorced</label>
+                   
                     <input id="widowed" name="marital" type="radio" value="Widowed" >
-                    <label for="married">Widowed</label>
+                    <label for="married">     Widowed</label>
             </li>
-            <li><p>Do you identify as an English learner?</p>
+            <li><p><strong>Do you identify as an English learner?</strong></p>
                 <p> 
-                    <input id="EL:NO" name="EL" type="radio" value="No" checked>
+                    <input id="EL:NO" name="EL" type="radio" value="No" >
                     <label for="gender_male">No</label>
                 <br>     
                     <input id="EL:Yes" name="EL" type="radio" value="Yes"/>
@@ -153,7 +145,7 @@ require_once('locations.php');
              
                 </p>
             </li> 
-            <li><p>Please identify your occupation.</p>
+            <li><p><strong>Please identify your occupation.</strong></p>
                 <p> 
                     <input id="employ" name="Employ" type="Text" style="min-width: 250px" >
                     <label for="gender_male"></label>
@@ -161,7 +153,7 @@ require_once('locations.php');
                 </p>
             </li> 
             <li>
-            <p>Please identify your religion.<p>
+            <p><strong>Please identify your religion.</strong><p>
                   <select id ="religion" name = "religion" >
                   <option disabled selected value="unselected"> -- select an option -- </option>
                     <option value = "bu">Buddhism </option>
@@ -173,10 +165,10 @@ require_once('locations.php');
                   </select>
             </li>
             <li>
-                <p>Definition: A robot is a machine designed to execute one or more tasks automatically with speed and precision. <br>
-                Does your occupation currently involve working with a robot?</p>
+                <p><strong>Definition: A robot is a machine designed to execute one or more tasks automatically with speed and precision. <br>
+                Does your occupation currently involve working with a robot? </strong></p>
                 <p> 
-                    <input id="robot:no" name="robot" type="radio" value="No" checked>
+                    <input id="robot:no" name="robot" type="radio" value="No" >
                     <label for="robot:no">No</label>
                 <br>     
                     <input id="robot:yes" name="robot" type="radio" value="Yes"/>

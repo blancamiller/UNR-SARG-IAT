@@ -455,23 +455,29 @@ if( isset($_REQUEST['op']) )
 		case 'aggregate':
 			break;
 		case 'writeoutput':
-			if( isset($_REQUEST['template']) )
-			{
-				if( isset($_REQUEST['data']) )
-				{	
-					
-					$folder_dir = "../templates/".$_REQUEST['template']."/output/";
+			$folder_dir = "../templates/"."SARG_IAT_RESULTS"."/output/";
 
 					$sub = isset( $_REQUEST['subject'] ) ? $_REQUEST['subject'] : 'unknown2' ;
 
 					$data = $_REQUEST["data"]; 
 					$datetxt = date('Y-m-d-H-s');
-					$fh = fopen($folder_dir. $_REQUEST['template'] . "-" . $sub . '-' . $datetxt . '.txt', 'w');
+					$fh = fopen($folder_dir. "IAT_RESULT" . '-' . $datetxt . '-' . $sub. '.txt', 'w');
 					fwrite($fh, $data);
 					fclose($fh);
+			if( isset($_REQUEST['template'])  && false)
+			{
+				if( isset($_REQUEST['data']) )
+				{	
 					
-					
-									
+					$folder_dir = "../templates/"."SARG_IAT_RESULTS"."/output/";
+
+					$sub = isset( $_REQUEST['subject'] ) ? $_REQUEST['subject'] : 'unknown2' ;
+
+					$data = $_REQUEST["data"]; 
+					$datetxt = date('Y-m-d-H-s');
+					$fh = fopen($folder_dir. "IAT_RESULT" . '-' . $datetxt . '-' . $sub. '.txt', 'w');
+					fwrite($fh, $data);
+					fclose($fh);					
 				}
 				else
 				{

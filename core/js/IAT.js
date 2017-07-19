@@ -27,6 +27,7 @@ function initialize( val)
 		});
 	console.log("FIRST");
 		loadInstructions("one");
+		//loadInstructions("Three");
 			}
 	else if(val == 1)
 	{
@@ -383,7 +384,8 @@ function instructionPage()
 		}
 		else
 		{
-		    resulttext = "<div style='text-align:center;padding:20px'>Thanks for participating!</div>";
+			calculateIAT();
+		    resulttext += "<div style='text-align:center;padding:20px'>\nThank you for participating!\nPlease press space or click on the screen to continue to a short questionairre.</div>";
 		    $("#picture_frame").html(resulttext);
 		}
 	}
@@ -561,6 +563,7 @@ function calculateIAT()
         resulttext += openA+template.catB.label+closeA+" with "+open1+template.cat1.label+close1+".</div>"; 
         // resulttext += "<div>incompatible: "+incompatible+" ("+(ivar/39)+"); compatible: "+compatible+" ("+(cvar/39)+"); tvalue: "+tvalue+"</div>";
     }
+    //resulttext += "\nThank you for completing the UNR Robotics implicit assoicaition test.\n Please press space and complete a short questionairre."
 	$("#picture_frame").html(resulttext);
     return tvalue;
 } 
@@ -856,31 +859,30 @@ function checkQuestionairre()
 		questionArray.push("," +$("input[name=NARS-Q13]:checked").val());
 		questionArray.push("," +$("input[name=NARS-Q14]:checked").val());
 		demos += questionArray;
-	WriteFile();
-	console.log(questionArray);
+		WriteFile();
+		console.log(demos);
 	}
 }
 
 
 // Converts the data for each session and round into a comma-delimited string
 // and passes it to writeFile.php to be written by the server
-function WriteFile()
+function saveTest()
 {
-	
 	var subject = sub;
 	subject = subject.length==0 ? "unknown" : subject;
-	var str = "";
-	str += demos;
+	
+	demos;
 	for (i=0; i<roundArray.length; i++)
 	{
 		for (j=0;j<roundArray[i].length;j++)
 		{
-			str += i + "," + j + ",";
-	        str += roundArray[i][j].category+",";
-			str += roundArray[i][j].catIndex+",";
-			str += roundArray[i][j].errors+",";
-			str += (roundArray[i][j].endtime - roundArray[i][j].starttime).toString();
-			str += "\r\n";
+			demos += i + "," + j + ",";
+	        demos += roundArray[i][j].category+",";
+			demos += roundArray[i][j].catIndex+",";
+			demos += roundArray[i][j].errors+",";
+			demos += (roundArray[i][j].endtime - roundArray[i][j].starttime).toString();
+			demos += "\r\n";
 			var catIndex=roundArray[i][j].catIndex;
 			var category=roundArray[i][j].category;
 			var datai=i;
@@ -890,25 +892,32 @@ function WriteFile()
 		}
 	}
 	var IATScore = calculateIAT(roundArray);
-	str += IATScore;
-	str += "\r\n";
-	str += "Scores used to calculateIAT"
+	demos += IATScore;
+	demos += "\r\n";
+	demos += "Scores used to calculateIAT"
 
 	for (i=0; i<roundArray.length; i++)
 	{
 		for (j=0;j<roundArray[i].length;j++)
 		{
-			str += i + "," + j + ",";
-	        str += roundArray[i][j].category+",";
-			str += roundArray[i][j].catIndex+",";
-			str += roundArray[i][j].errors+",";
-			str += (roundArray[i][j].endtime - roundArray[i][j].starttime).toString();
-			str += "\r\n";
+			demos += i + "," + j + ",";
+	        demos += roundArray[i][j].category+",";
+			demos += roundArray[i][j].catIndex+",";
+			demos += roundArray[i][j].errors+",";
+			demos += (roundArray[i][j].endtime - roundArray[i][j].starttime).toString();
+			demos += "\r\n";
 			
 		}
 	}
-	str += resulttext +="\r\n";
-    $.post("core/fileManager.php", { 'op':'writeoutput', 'template':template.name, 
+	demos += resulttext +="\r\n";
+}
+function WriteFile()
+{
+	
+	var subject = sub;
+	subject = subject.length==0 ? "unknown" : subject;
+	var str = demos;
+    $.post("core/fileManager.php", { 'op':'writeoutput', 'template':"RobotImages", 
  			'subject': subject, 'data': str });	
  	
 	// notify user of success?
@@ -1026,6 +1035,7 @@ function handleClick(event)
     else if(  session == 7)
     {
     	//writeFile();
+    	saveTest();
     	loadInstructions('Three');
     }
 

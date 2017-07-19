@@ -5,12 +5,13 @@ CSS style sheet for use throughout the IAT.
 body {
     background:none repeat scroll 0 0 #807f84;
     border:0 none;
+    font-family: Helvetica, Arial, Sans-Serif;
 }
 form{
 	display: inline-block;
-	background-color: #999999;
+	background-color: #BABABA;
 	padding-left: 0px;
-	font-family: Frutiger, monospace;
+	font-family: Helvetica, Arial, Sans-Serif;
 }
 header
 {
@@ -53,7 +54,8 @@ input[type=checkbox]
 	margin-left: auto;
 	margin-right: auto;
     width: 800px;
-    background-color:#999999; 
+    background-color:#BABABA; 
+    
 }
 
 #experiment_frame
@@ -129,4 +131,8 @@ input[type=checkbox]
 {
 	text-decoration-color: red;
 	color: red;
+}
+.container
+{
+ 
 }

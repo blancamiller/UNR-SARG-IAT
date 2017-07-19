@@ -17,14 +17,16 @@
 <img src= "core/unr.png"> 
 <br>Robotics Implicit Association Test
 </header>
-<body>
+<div class="container" >
+<body >
     
-<div id="instructions">
+<div id="instructions"  >
     Javascript must be enabled for the application to run.<br><br>
     Please enable javascript to continue.<br><br>
 </div>
 
 </body>
+</div>
 <footer>
 Please email David Feil-Seifer, Dave@cse.unr.edu, with any questions regarding the study and iatrobotsurvey@gmail.com for assistance with any technical issues.
 </footer>

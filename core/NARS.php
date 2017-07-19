@@ -3,29 +3,32 @@ require_once("IATname.inc");
 require_once('locations.php');
 ?>
 <html>
-
 <head>
 <title><?php echo $IATname; ?> IAT Survey</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <style type="text/css"> @import "core/css/iat.css";
-
 .labelClass {
     border: 1px rgb(128,227,132);
     min-width: 100%;
-}
-
-
-</style>	
+}</style> 
 <script type="text/javascript" src="core/js/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="core/js/IAT.js"></script>
+<script type="text/javascript" src="core/js/IAT.js"></script>
 </head>
+<header>
+<img src= "core/unr.png"> 
+<br>Robotics Implicit Association Test
+</header>
 
-<body>
+
+
+<body >
+
    
-<div id="surveylist">
+<div id="surveylist" style="padding-right: 10px; padding-left: 20px;  padding-bottom: 20px; border: double;border-width: 2px;background-color:#BABABA; max-width: 700px; margin-right: 25%;">
 	<form id="demographics">
-    <ol>
-    <label>
+    
+    <label  class = "labelClass" style="text-align: center;">
 		"Please rate much you agree or disagree with the following statements:<br>
         (1: Strongly Disagree, 2: Disagree, 3: Undecided, 4: Agree, 5:Strongly agree) <br>
 </label>
@@ -303,10 +306,12 @@ require_once('locations.php');
         </form>
        
         
-        
-    </form>
     <input type="button" value="Submit Questionairre" style="text-align: center;display: block;margin-left: auto;margin-right: auto;" onclick='checkQuestionairre()'/>
     
-       
-</div>
+  </div>     
+
 </body>
+
+<footer>
+Please email David Feil-Seifer, Dave@cse.unr.edu, with any questions regarding the study and iatrobotsurvey@gmail.com for assistance with any technical issues.
+</footer>
