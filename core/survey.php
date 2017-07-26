@@ -52,16 +52,16 @@ require_once('locations.php');
                 <p><strong>How do you describe your race and ethnicity? (Mark all that apply)</strong></p>
                 <p>      
                      <input id="race_white" name="race" type="checkbox" value="White"/> 
-                    <label for="race_white">White</label>
+                    <label for="race_white">White, non-Hispanic</label>
                 <br>      
                     <input id="race_black" name="race" type="checkbox" value="Black"/> 
-                    <label for="race_black">Black or African-American</label>
+                    <label for="race_black">Black or African-American, non-Hispanic</label>
                 <br>    
                     <input id="race_latino" name="race" type="checkbox" value="Latino"/> 
                     <label for="race_latino">Hispanic or Latino</label>
                 <br>
                     <input id="race_indian" name="race" type="checkbox" value="Indian"/> 
-                    <label for="race_indian">Native American</label>
+                    <label for="race_indian">American Indian or Alaskan Native</label>
                 <br> 
                     <input id="race_asian" name="race" type="checkbox" value="Asian"/> 
                     <label for="race_asian">Asian</label>
